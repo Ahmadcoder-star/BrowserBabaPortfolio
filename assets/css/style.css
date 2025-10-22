@@ -1,0 +1,379 @@
+:root {
+  --bg1: #0d0d14;
+  --bg2: #1a1a28;
+  --accent: #00e0ff;
+  --accent2: #7b61ff;
+  --text: #e4e4e4;
+}
+
+body {
+  background: radial-gradient(circle at 20% 30%, var(--bg2), var(--bg1));
+  color: var(--text);
+  font-family: "Raleway", sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* ===== Cursor ===== */
+.cursor {
+  position: fixed;
+  width: 25px;
+  height: 25px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, width 0.2s, height 0.2s;
+  z-index: 9999;
+}
+
+a:hover~.cursor,
+button:hover~.cursor {
+  width: 40px;
+  height: 40px;
+}
+.navbar{
+  background: rgba(10, 10, 20, 0.95);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(0, 224, 255, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* --- Brand/Logo Styling --- */
+.navbar-brand {
+  /* Assuming text-cyan is #00e0ff or similar - make it glow */
+  color: #00e0ff !important; /* Ensure it overrides default */
+  font-weight: 900; /* Bolder font for impact */
+  letter-spacing: 2px; /* Space out letters for a modern tech look */
+  text-shadow: 0 0 8px rgba(0, 224, 255, 0.6); /* Add a subtle glow */
+}
+
+/* --- Navigation Links --- */
+.navbar .nav-link {
+  color: #a0a0a0; /* Slightly lighter base color for better readability */
+  margin-left: 25px; /* Increase margin for more 'breathing room' */
+  transition: color 0.4s ease, transform 0.4s ease; /* Add transform to transition */
+  text-transform: uppercase; /* Use ALL CAPS for a tech aesthetic */
+  font-size: 0.9rem;
+}
+
+/* --- Active & Hover States (The 'Pop' Effect) --- */
+.navbar .nav-link:hover, .navbar .nav-link.active {
+  color: #00e0ff; /* Bright cyan highlight */
+  text-shadow: 0 0 15px rgba(0, 224, 255, 0.8), /* Intense, focused glow */
+               0 0 30px rgba(0, 224, 255, 0.3); /* Wider, softer glow */
+  transform: translateY(-2px) scale(1.05); /* LIFT and slightly ENLARGE on hover/active */
+  position: relative;
+}
+@media (max-width: 850px) {
+    .navbar .nav-link:hover,
+    .navbar .nav-link.active {
+        transform: none;
+    }
+
+    .navbar .nav-link::after {
+        display: none;
+    }
+}
+
+/* --- Adding an Underline Bar on Active/Hover (Optional) --- */
+.navbar .nav-link.active::after, .navbar .nav-link:hover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -15px; /* Position below the text */
+  height: 3px;
+  background: #00e0ff;
+  box-shadow: 0 0 10px #00e0ff;
+  border-radius: 2px;
+  opacity: 1;
+  transition: all 0.4s ease;
+}
+
+/* Hide the bar initially for a cleaner look */
+.navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    height: 3px;
+    background: transparent;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+/* --- Toggler Button Customization (for the glow) --- */
+.navbar-toggler {
+  border: none;
+  color: #00e0ff !important;
+}
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.neon-text {
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent);
+}
+
+/* ===== Hero ===== */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero #typed-text {
+  color: #fff !important;
+  opacity: 0.5;
+}
+
+/* Floating Orbs */
+.orb {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  filter: blur(150px);
+  opacity: 0.6;
+  animation: float 10s infinite alternate ease-in-out;
+}
+
+.orb1 {
+  background: var(--accent);
+  top: 10%;
+  left: -10%;
+}
+
+.orb2 {
+  background: var(--accent2);
+  bottom: 5%;
+  right: -10%;
+  animation-delay: 3s;
+}
+
+.orb3 {
+  background: #ff00ff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: 6s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+
+  100% {
+    transform: translateY(-30px) scale(1.1);
+  }
+}
+
+/* ===== About ===== */
+.about{
+  background: var(--bg1) !important;
+}
+.profile-wrapper {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent2), transparent 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: floatProfile 4s ease-in-out infinite alternate;
+}
+
+.profile-img {
+  width: 150px;
+  height: 150px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 20px var(--accent2);
+  border-radius: 50%;
+}
+
+@keyframes floatProfile {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-20px);
+  }
+}
+
+/* ===== General Section Styling ===== */
+.bg-gradient {
+  /* Subtle background shift for section separation */
+  background: linear-gradient(180deg, rgba(13, 13, 20, 1) 50%, rgba(26, 26, 40, 1) 100%) !important;
+}
+
+/* ===== Skills Section ===== */
+.skill-card {
+  background: rgba(255, 255, 255, 0.03);
+  /* Very subtle card background */
+  border: 1px solid rgba(0, 224, 255, 0.1);
+  /* Light border */
+  padding: 30px;
+  border-radius: 10px;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 10px rgba(0, 224, 255, 0);
+  /* Initial subtle shadow */
+}
+
+.skill-card:hover {
+  background: rgba(0, 224, 255, 0.05);
+  /* Highlight on hover */
+  transform: translateY(-5px);
+  /* Lift effect */
+  box-shadow: 0 5px 25px rgba(0, 224, 255, 0.3);
+  /* Stronger neon glow */
+}
+
+.skill-icon {
+  font-size: 3rem;
+  color: var(--accent);
+  text-shadow: 0 0 8px var(--accent);
+  /* Icon glow */
+}
+
+
+/* ===== Projects Section ===== */
+.projects {
+  background: linear-gradient(180deg, rgba(26, 26, 40, 1) 50%, rgba(13, 13, 20, 1) 100%) !important;
+}
+
+/* 🌟 Projects Section */
+.projects {
+  background: #0a0a0a;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.projects h2 {
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.projects .text-cyan {
+  color: #00ffff; /* Neon cyan glow */
+  text-shadow: 0 0 10px #00ffff;
+}
+
+.projects p {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #bbb;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+
+
+.projects::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.05) 0%, transparent 60%);
+  animation: rotateGlow 12s linear infinite;
+  z-index: 0;
+}
+
+@media (max-width: 768px){
+  .projects::before{
+    display: none;
+  }
+}
+
+@keyframes rotateGlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.projects .container {
+  position: relative;
+  z-index: 2;
+}
+
+
+
+/* ===== Contact Section (Form) ===== */
+.contact-form .form-control {
+  background: rgba(255, 255, 255, 0.05);
+  /* Transparent input field */
+  border: 1px solid rgba(0, 224, 255, 0.2);
+  color: var(--text);
+  padding: 12px 15px;
+  border-radius: 5px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.contact-form .form-control:focus {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: var(--accent);
+  /* Neon border on focus */
+  box-shadow: 0 0 8px rgba(0, 224, 255, 0.6);
+  color: var(--text);
+}
+
+.contact-form ::placeholder {
+  color: #888;
+  /* Dim placeholder text */
+}
+
+/* Ensure the submit button uses the existing neon style */
+.contact-form .btn-neon {
+  margin-top: 10px;
+}
+
+/* ===== Footer ===== */
+footer {
+  background: rgba(20, 20, 30, 0.85);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+footer a {
+  color: var(--accent);
+  font-size: 20px;
+  margin: 0 10px;
+  transition: all 0.3s;
+}
+
+footer a:hover {
+  color: var(--accent2);
+  text-shadow: 0 0 10px var(--accent2);
+}
+
+.btn-neon {
+  display: inline-block;
+  background: transparent;
+  color: #00ffff;
+  border: 2px solid #00ffff;
+  border-radius: 30px;
+  padding: 10px 25px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: 0.3s;
+  box-shadow: 0 0 10px #00ffff;
+}
+
+.btn-neon:hover {
+  background: #00ffff;
+  color: #0a0a0a;
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+  transform: scale(1.05);
+}

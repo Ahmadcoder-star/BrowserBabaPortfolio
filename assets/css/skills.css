@@ -1,0 +1,179 @@
+:root {
+  --bg-color: #0d0d14;
+  --card-bg: rgba(21, 21, 33, 0.6);
+  --accent: #00e0ff;
+  --text: #e4e4e4;
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text);
+  font-family: "Raleway", sans-serif;
+  overflow-x: hidden;
+}
+.navbar{
+  background: rgba(10, 10, 20, 0.95);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(0, 224, 255, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+/* --- Brand/Logo Styling --- */
+.navbar-brand {
+  /* Assuming text-cyan is #00e0ff or similar - make it glow */
+  color: #00e0ff !important; /* Ensure it overrides default */
+  font-weight: 900; /* Bolder font for impact */
+  letter-spacing: 2px; /* Space out letters for a modern tech look */
+  text-shadow: 0 0 8px rgba(0, 224, 255, 0.6); /* Add a subtle glow */
+}
+
+/* --- Navigation Links --- */
+.navbar .nav-link {
+  color: #a0a0a0; /* Slightly lighter base color for better readability */
+  margin-left: 25px; /* Increase margin for more 'breathing room' */
+  transition: color 0.4s ease, transform 0.4s ease; /* Add transform to transition */
+  text-transform: uppercase; /* Use ALL CAPS for a tech aesthetic */
+  font-size: 0.9rem;
+}
+
+/* --- Active & Hover States (The 'Pop' Effect) --- */
+.navbar .nav-link:hover, .navbar .nav-link.active {
+  color: #00e0ff; /* Bright cyan highlight */
+  text-shadow: 0 0 15px rgba(0, 224, 255, 0.8), /* Intense, focused glow */
+               0 0 30px rgba(0, 224, 255, 0.3); /* Wider, softer glow */
+  transform: translateY(-2px) scale(1.05); /* LIFT and slightly ENLARGE on hover/active */
+  position: relative;
+}
+
+@media (max-width: 850px) {
+    .navbar .nav-link:hover,
+    .navbar .nav-link.active {
+        transform: none;
+    }
+
+    .navbar .nav-link::after {
+        display: none;
+    }
+}
+
+/* --- Adding an Underline Bar on Active/Hover (Optional) --- */
+.navbar .nav-link.active::after, .navbar .nav-link:hover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -15px; /* Position below the text */
+  height: 3px;
+  background: #00e0ff;
+  box-shadow: 0 0 10px #00e0ff;
+  border-radius: 2px;
+  opacity: 1;
+  transition: all 0.4s ease;
+}
+
+/* Hide the bar initially for a cleaner look */
+.navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    height: 3px;
+    background: transparent;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+/* --- Toggler Button Customization (for the glow) --- */
+.navbar-toggler {
+  border: none;
+  color: #00e0ff !important;
+}
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.skills-section{
+    padding: 6rem 0;
+}
+
+/* Section */
+.section-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.section-title span {
+  color: var(--accent);
+}
+
+/* Filter Buttons */
+.filter-btn {
+  background: transparent;
+  color: #00ffff;
+  border: 2px solid #00ffff;
+  border-radius: 30px;
+  padding: 0.4rem 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: 0.3s;
+  /* box-shadow: 0 0 10px #00ffff; */
+}
+.filter-btn:hover,
+.filter-btn.active {
+  background: #00ffff;
+  color: #0a0a0a;
+  /* box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; */
+  /* transform: scale(1.05); */
+}
+
+/* Skills */
+.skill-card {
+  background: var(--card-bg);
+  border-radius: 15px;
+  padding: 1.5rem;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 15px rgba(0, 224, 255, 0.08);
+  transition: 0.3s;
+}
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0, 224, 255, 0.25);
+}
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.skill-info h5 {
+  font-weight: 600;
+  color: var(--text);
+}
+.skill-info i {
+  color: var(--accent);
+}
+.percent {
+  color: var(--accent);
+  font-weight: 600;
+}
+.progress-bar {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.progress {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  box-shadow: 0 0 20px var(--accent);
+  transition: width 1.5s ease-in-out;
+}
+
+/* Particles background */
+#particles-js {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1;
+}

@@ -1,0 +1,172 @@
+body {
+    background: #0d0d11;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+}
+
+.text-cyan {
+    color: #00e0ff;
+}
+
+/* --- Background & Structure --- */
+.navbar {
+    /* Keep the dark, slightly transparent background */
+    background: rgba(10, 10, 20, 0.95);
+    /* Slightly darker for more contrast */
+    backdrop-filter: blur(15px);
+    /* Increase blur for a softer, 'holographic' effect */
+    border-bottom: 1px solid rgba(0, 224, 255, 0.2);
+    /* Subtle light cyan border */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    /* Stronger shadow for floating effect */
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* --- Brand/Logo Styling --- */
+.navbar-brand {
+    /* Assuming text-cyan is #00e0ff or similar - make it glow */
+    color: #00e0ff !important;
+    /* Ensure it overrides default */
+    font-weight: 900;
+    /* Bolder font for impact */
+    letter-spacing: 2px;
+    /* Space out letters for a modern tech look */
+    text-shadow: 0 0 8px rgba(0, 224, 255, 0.6);
+    /* Add a subtle glow */
+}
+
+/* --- Navigation Links --- */
+.navbar .nav-link {
+    color: #a0a0a0;
+    /* Slightly lighter base color for better readability */
+    margin-left: 25px;
+    /* Increase margin for more 'breathing room' */
+    transition: color 0.4s ease, transform 0.4s ease;
+    /* Add transform to transition */
+    text-transform: uppercase;
+    /* Use ALL CAPS for a tech aesthetic */
+    font-size: 0.9rem;
+}
+
+/* --- Active & Hover States (The 'Pop' Effect) --- */
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: #00e0ff;
+    /* Bright cyan highlight */
+    text-shadow: 0 0 15px rgba(0, 224, 255, 0.8),
+        /* Intense, focused glow */
+        0 0 30px rgba(0, 224, 255, 0.3);
+    /* Wider, softer glow */
+    transform: translateY(-2px) scale(1.05);
+    /* LIFT and slightly ENLARGE on hover/active */
+    position: relative;
+}
+
+@media (max-width: 850px) {
+    .navbar .nav-link:hover,
+    .navbar .nav-link.active {
+        transform: none;
+    }
+
+    .navbar .nav-link::after {
+        display: none;
+    }
+}
+
+/* --- Adding an Underline Bar on Active/Hover (Optional) --- */
+.navbar .nav-link.active::after,
+.navbar .nav-link:hover::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -15px;
+    /* Position below the text */
+    height: 3px;
+    background: #00e0ff;
+    box-shadow: 0 0 10px #00e0ff;
+    border-radius: 2px;
+    opacity: 1;
+    transition: all 0.4s ease;
+}
+
+/* Hide the bar initially for a cleaner look */
+.navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    height: 3px;
+    background: transparent;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+/* --- Toggler Button Customization (for the glow) --- */
+.navbar-toggler {
+  border: none;
+  color: #00e0ff !important;
+}
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.projects-section h2 {
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.search-bar input {
+    max-width: 400px;
+    margin: 0 auto;
+    /* background: rgba(30, 30, 40, 0.8); */
+    border: 2px solid #00e0ff;
+    border-radius: 30px;
+    color: #fff;
+    text-align: center;
+}
+
+.search-bar input:focus {
+    box-shadow: none;
+    border: 2px solid #765DF4;
+}
+
+.card-glass {
+    background: rgba(25, 25, 35, 0.6);
+    border-radius: 15px;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 10px rgba(0, 224, 255, 0.1);
+}
+
+.card-glass:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 25px rgba(0, 224, 255, 0.4);
+}
+
+.btn-glow,
+.btn-glow-outline {
+    text-decoration: none;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-glow {
+    background: #00e0ff;
+    color: #000;
+}
+
+.btn-glow:hover {
+    background: #00ffff;
+}
+
+.btn-glow-outline {
+    border: 1px solid #00e0ff;
+    color: #00e0ff;
+}
+
+.btn-glow-outline:hover {
+    background: #00e0ff;
+    color: #000;
+}

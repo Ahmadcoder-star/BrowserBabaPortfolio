@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Browser Baba</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/projects.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand text-cyan fw-bold" href="#">Browser Baba</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav"
+                aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="main-nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="skills.html" class="nav-link">Skills</a></li>
+                    <li class="nav-item"><a href="projects.html" class="nav-link active">Projects</a></li>
+                    <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Projects Section -->
+    <section class="projects-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-4"><span class="text-cyan">My</span> Projects</h2>
+
+            <!-- Search Bar -->
+            <div class="search-bar text-center mb-5">
+                <input type="text" id="projectSearch" class="form-control" placeholder="🔍 Search your projects...">
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="row g-4" id="projectGrid"></div>
+
+        </div>
+    </section>
+
+    <!-- <script src="assets/js/skills.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const projectGrid = document.getElementById("projectGrid");
+        const searchInput = document.getElementById("projectSearch");
+        const username = "Ahmadcoder-star"; // Your GitHub username
+        const apiURL = `https://api.github.com/users/${username}/repos?sort=updated`;
+        const hiddenRepos = ["BrowserBaba-admin", "BrowserBabaPortfolio"];
+
+        let allRepos = []; // store all repos globally
+
+        async function loadGitHubProjects() {
+            projectGrid.innerHTML = "<p class='text-center'>Loading projects...</p>";
+
+            try {
+                const response = await fetch(apiURL);
+                const repos = await response.json();
+
+                // 🔥 Remove hidden repos
+                const visibleRepos = repos.filter(
+                    repo => !hiddenRepos.includes(repo.name)
+                );
+
+                allRepos = visibleRepos;
+                displayRepos(visibleRepos);
+            } catch (err) {
+                console.error(err);
+                projectGrid.innerHTML = "<p class='text-center text-danger'>⚠️ Failed to load GitHub projects.</p>";
+            }
+        }
+
+        // Function to display repos dynamically
+        function displayRepos(repos) {
+            if (!repos.length) {
+                projectGrid.innerHTML = "<p class='text-center'>No projects found.</p>";
+                return;
+            }
+
+            projectGrid.innerHTML = repos
+                .map(repo => `
+        <div class="col-lg-4 col-md-6 project-card" 
+             data-name="${repo.name.toLowerCase()}" 
+             data-description="${(repo.description || '').toLowerCase()}"
+             data-language="${(repo.language || '').toLowerCase()}">
+          <div class="card-glass p-3">
+            <img src="https://opengraph.githubassets.com/1/${username}/${repo.name}" 
+                 class="img-fluid rounded-3 mb-3" alt="${repo.name}">
+            <h5>${repo.name}</h5>
+            <p>${repo.description ? repo.description : "No description provided."}</p>
+            <p><small>⭐ ${repo.stargazers_count} | 🧠 ${repo.language || "Unknown"}</small></p>
+            <div class="d-flex justify-content-between">
+              <a href="${repo.homepage ? repo.homepage : repo.html_url}" target="_blank" class="btn-glow">
+                Live Demo
+              </a>
+              <a href="${repo.html_url}" target="_blank" class="btn-glow-outline">
+                Source Code
+              </a>
+            </div>
+          </div>
+        </div>
+      `)
+                .join("");
+        }
+
+        // 🔍 Smart search
+        searchInput.addEventListener("keyup", () => {
+            const value = searchInput.value.toLowerCase();
+
+            const filtered = allRepos.filter(repo =>
+                repo.name.toLowerCase().includes(value) ||
+                (repo.description && repo.description.toLowerCase().includes(value)) ||
+                (repo.language && repo.language.toLowerCase().includes(value))
+            );
+
+            displayRepos(filtered);
+        });
+
+        // Load when page opens
+        loadGitHubProjects();
+    </script>
+</body>
+
+</html>
