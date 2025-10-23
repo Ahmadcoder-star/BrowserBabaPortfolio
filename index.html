@@ -131,16 +131,18 @@
           <form class="contact-form">
             <div class="row g-3">
               <div class="col-md-6">
-                <input type="text" class="form-control" placeholder="Your Name" required>
+                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
               </div>
               <div class="col-md-6">
-                <input type="email" class="form-control" placeholder="Your Email" required>
+                <input type="email" name="email" class="form-control" placeholder="Your Email" required>
               </div>
               <div class="col-12">
-                <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                <textarea name="message" class="form-control" rows="5" placeholder="Your Message" required></textarea>
               </div>
               <div class="col-12">
-                <button type="submit" class="btn btn-neon w-100">Send Transmission</button>
+                <button type="submit" class="btn btn-neon w-100">
+                  Send Transmission
+                </button>
               </div>
             </div>
           </form>
@@ -154,8 +156,8 @@
     <div class="social-links mb-3">
       <a href="https://github.com/Ahmadcoder-star"><i class="fab fa-github"></i></a>
       <a href="https://pk.linkedin.com/"><i class="fab fa-linkedin"></i></a>
-      <a href="https://www.instagram.com/browserbaba24x7/"><i class="fab fa-instagram"></i></a>
-      <a href="https://wa.link/vog0uc"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="https://www.instagram.com/inn_ocentboy214/"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.link/nddoi2"><i class="fa-brands fa-whatsapp"></i></a>
       <a href="mailto:browserbaba24x7@gmail.com?subject=Hello%20Browser%20Baba">
         <i class="fa-regular fa-envelope"></i>
       </a>
@@ -165,9 +167,30 @@
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="assets/js/main.js"></script>
   <script>AOS.init();</script>
+  <script>
+    (function () {
+      emailjs.init("cXCR8HJDBBO2DZ2Ws"); // ✅ your public key
+    })();
+
+    document.querySelector(".contact-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      emailjs.sendForm("service_i5tv3ae", "template_f5c1uqn", this)
+        .then(() => {
+          alert("✅ Message sent successfully!");
+          this.reset(); // optional: clear the form
+        })
+        .catch(error => {
+          alert("❌ Failed to send message. Try again later.");
+          console.error("EmailJS error:", error);
+        });
+    });
+  </script>
+
 </body>
 
 </html>
