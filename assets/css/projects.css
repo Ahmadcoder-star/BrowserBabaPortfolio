@@ -170,3 +170,7 @@ body {
     background: #00e0ff;
     color: #000;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
