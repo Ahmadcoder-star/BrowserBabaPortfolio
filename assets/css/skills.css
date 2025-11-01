@@ -116,6 +116,7 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   transition: 0.3s;
+  margin: 0 5px;
   /* box-shadow: 0 0 10px #00ffff; */
 }
 .filter-btn:hover,
@@ -191,7 +192,7 @@ body {
   .filter-btn {
     padding: 0.3rem 1rem;
     font-size: 0.8rem;
-    margin: 0 5px;
+    /* margin: 0 5px; */
   }
 
   /* Skills Section */
@@ -239,3 +240,4 @@ body {
     font-size: 0.8rem;
   }
 }
+
