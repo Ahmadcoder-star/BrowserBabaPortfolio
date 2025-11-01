@@ -181,3 +181,61 @@ body {
 ::-webkit-scrollbar {
   display: none;
 }
+
+/* ==========================
+   MOBILE RESPONSIVE STYLES
+========================== */
+@media (max-width: 768px) {
+
+  /* Filter Buttons */
+  .filter-btn {
+    padding: 0.3rem 1rem;
+    font-size: 0.8rem;
+    margin: 0 5px;
+  }
+
+  /* Skills Section */
+  .skills-section {
+    padding: 3rem 1rem;
+  }
+
+  .skill-card-wrapper {
+    width: 100%;
+  }
+
+  .skill-card {
+    padding: 1.2rem;
+  }
+
+  .skill-info h5 {
+    font-size: 1rem;
+  }
+
+  .percent {
+    font-size: 0.9rem;
+  }
+
+  .progress-bar {
+    height: 8px;
+  }
+}
+
+/* Extra small devices (like <480px) */
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .filter-btn {
+    padding: 0.25rem 0.8rem;
+    font-size: 0.75rem;
+  }
+
+  .skill-info h5 {
+    font-size: 0.9rem;
+  }
+
+  .percent {
+    font-size: 0.8rem;
+  }
+}
